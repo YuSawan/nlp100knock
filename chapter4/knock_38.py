@@ -7,13 +7,9 @@ def main(my_morph):
 	words = list()
 	for line in my_morph:
 		for morph in line:
-			words.append(morph['surface'])
-	names,cnts = zip(*Counter(words).most_common()[:10])
-	plt.bar(range(len(names)),map(lambda x:int(x),cnts),align='center')
-	plt.xticks(range(len(names)),map(x,names))
-	plt.title('Top.10 Frequency Word')
-	plt.ylabel('Frequency')
-	plt.xlim(xmin=1)
+			words.append(morph['base'])
+	names,cnts = zip(*Counter(words).most_common())
+	plt.hist(cnts,bins=cnts[0])
 	plt.show()
 
 if __name__ == '__main__':
